@@ -100,8 +100,6 @@ public class CellManager : MonoBehaviour
     {
       Vector2 curLocation = neighboars[liveCounter];
 
-      Debug.Log("Cur Location" + curLocation + " | " + _cells[(int)curLocation.x, (int)curLocation.y]);
-
       if (_cells[(int)curLocation.x, (int)curLocation.y].isAlive)
       {
         liveCount += 1;
