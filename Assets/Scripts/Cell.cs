@@ -30,6 +30,8 @@ public class Cell : MonoBehaviour
   }
 
   SpriteRenderer _renderer = null;
+
+  ParticleSystem _particles = null;
   #endregion
 
   public void Initialize(bool active, Vector2 gridLocation)
@@ -41,6 +43,12 @@ public class Cell : MonoBehaviour
   void Awake()
   {
     _renderer = this.GetComponent<SpriteRenderer>();
+    _particles = this.GetComponent<ParticleSystem>();
+
+    if (_particles != null)
+    {
+      _particles.Stop();
+    }
 
     isAlive = isAlive;
   }
@@ -65,6 +73,18 @@ public class Cell : MonoBehaviour
       if (_renderer != null)
       {
         _renderer.enabled = _isAlive;
+      }
+
+      if (_particles != null)
+      {
+        if (!_isAlive)
+        {
+          _particles.Play();
+        }
+        else
+        {
+          _particles.Stop();
+        }
       }
     }
   }

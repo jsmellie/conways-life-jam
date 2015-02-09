@@ -4,7 +4,6 @@
 	{
 		[PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
 		_Seed ("Seed", Float) = 0
-		_TintColor ("Tint Color", Color) = (0.5,0.5,0.5,0.5)
 		[MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
 	}
 
@@ -69,9 +68,11 @@
 
 				c.a = 1;
 
-				c.r = 0.45f * sin((2 * 3.14159f * 0.75f * _Time.y) + _Seed) + 0.6f;
-				c.g = 0.45f * sin((2 * 3.14159f * 1.35f * _Time.z) + (_Seed * 3 / 7)) + 0.6f;
-				c.b = 0.45f * sin((2 * 3.14159f * 0.75f * (_Time.y * 1.25f)) + (_Seed / 9 * 71)) + 0.6f;
+				float time = _Time.y / 10;
+
+				c.r = 0.45f * sin((2 * 3.14159f * 0.75f * time) + _Seed) + 0.6f;
+				c.g = 0.45f * sin((2 * 3.14159f * 1.35f * time) + (_Seed * 3 / 7)) + 0.6f;
+				c.b = 0.45f * sin((2 * 3.14159f * 0.75f * (time * 1.25f)) + (_Seed / 9 * 71)) + 0.6f;
 
 				return c;
 			}
