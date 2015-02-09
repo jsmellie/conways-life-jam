@@ -56,6 +56,26 @@ public class CellManager : MonoBehaviour
     }
   }
 
+  void Update()
+  {
+    if (Input.GetKeyDown(KeyCode.A))
+    {
+      Debug.Log("A key pressed!");
+    }
+
+    //If escape pressed,quit
+    if (Input.GetKeyDown(KeyCode.Escape))
+    {
+      Application.Quit();
+    }
+
+    //If left alt+R are pressed, randomly set the cells
+    if (Input.GetKeyDown(KeyCode.R) && Input.GetKey(KeyCode.LeftAlt))
+    {
+      RandomSet();
+    }
+  }
+
   public void CalculateLife(Cell curCell)
   {
     Vector2 location = curCell.gridLocation;
